@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/335aaf4351.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+      <a class="navbar-brand" href="#"
+        ><i class="fa-solid fa-cubes"></i>CodeCubes</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              ><i class="fa-solid fa-cloud"></i>Save</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><i class="fa-solid fa-gear"></i>setting</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="#">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-success" href="#">Log In</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+
+    <div class="container">
+      <div class="left">
+        <label><i class="fa-brands fa-html5"></i> HTML</label>
+        <textarea id="html-code" onkeyup="run()"></textarea>
+
+        <label><i class="fa-brands fa-css3-alt"></i> CSS</label>
+        <textarea id="CSS-code" onkeyup="run()"></textarea>
+
+        <label><i class="fa-brands fa-js"></i> JavaScript</label>
+        <textarea id="js-code" onkeyup="run()"></textarea>
+      </div>
+      <div class="right">
+        <label><i class="fa-solid fa-play"></i> Output</label>
+        <iframe id="output"></iframe>
+      </div>
+    </div>
+
+    <script>
+      function run() {
+        let htmlCode = document.getElementById("html-code").value;
+        let cssCode = document.getElementById("CSS-code").value;
+        let jsCode = document.getElementById("js-code").value;
+        let output = document.getElementById("output");
+
+        output.contentDocument.body.innerHTML = htmlCode + "<style>"+cssCode +"</style>";
+        output.contentWindow.eval(jsCode);
+      }
+    </script>
+  </body>
+</html>
